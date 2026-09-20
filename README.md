@@ -6,7 +6,7 @@
 ## 설치 방법
 
 1. 스팀에서 `Papers, Please`를 설치합니다.
-2. 릴리스에서 최신 압축 파일을 다운로드합니다.
+2. 릴리스에서 [최신 압축 파일](https://github.com/devrelu/papers-please-kp/releases/download/1.4.11.post1/PapersPlease_Data.zip)을 다운로드합니다.
 3. 압축을 풀면 나오는 `PapersPlease_Data` 폴더를 게임 폴더에 덮어씌웁니다.
    - 스팀 라이브러리에서 게임을 우클릭 → 관리 → 로컬 파일 보기
    - `PapersPlease_Data/sharedassets0.assets`
