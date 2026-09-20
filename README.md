@@ -1,11 +1,24 @@
 # 동무, 려권내라우
 
-## 적용 방법 (1.2.76 버전)
-1. 스팀 라이브러리에서 게임을 우클릭, 속성 - 베타 - `legacy-64 - Lecacy 64-bit build (1.2.76)` 선택 후 업데이트
-2. release에서 1.2.76 버전 [다운로드](https://github.com/DuelitDev/PapersPleaseDPRK/releases/download/1.5.1276b1)
-3. 다운로드한 파일을 압축 해제하고 게임 폴더에 덮어씌우기
+[![트레일러](https://img.youtube.com/vi/iYAh4806lFs/0.jpg)](https://youtu.be/iYAh4806lFs)
+
+
+## 설치 방법
+
+1. 스팀에서 `Papers, Please`를 설치합니다.
+2. 릴리스에서 최신 압축 파일을 다운로드합니다.
+3. 압축을 풀면 나오는 `PapersPlease_Data` 폴더를 게임 폴더에 덮어씌웁니다.
+   - 스팀 라이브러리에서 게임을 우클릭 → 관리 → 로컬 파일 보기
+   - `PapersPlease_Data/sharedassets0.assets`
+   - `PapersPlease_Data/sharedassets0.resource`
+   - `PapersPlease_Data/StreamingAssets/loc/ko-KP.zip`
+4. 게임을 실행하고 설정에서 언어를 `문화어`로 선택합니다.
+
+> 덮어씌우기 전에 원본 파일 3개를 백업해 두는 것을 권장합니다.
+
 
 ## 라이선스
+
 `LICENSE.txt`에 포함된 GNU 일반 공중 사용 허가서 버전 3 이상
 (`GPL-3.0-or-later`)은 이 저장소의 **소스 코드에만** 적용됩니다.
 
