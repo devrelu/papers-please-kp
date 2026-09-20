@@ -273,8 +273,8 @@ wheels = [
 
 [[package]]
 name = "papers-please-kp"
-version = "0.1.0"
-source = { virtual = "." }
+version = "1.4.11.post1"
+source = { editable = "." }
 dependencies = [
     { name = "unitypy" },
 ]
@@ -286,12 +286,12 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "unitypy", specifier = ">=1.24.0" }]
+requires-dist = [{ name = "unitypy", specifier = ">=1.25.3" }]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "basedpyright", specifier = ">=1.29.0" },
-    { name = "ruff", specifier = ">=0.11.0" },
+    { name = "basedpyright", specifier = ">=1.40.1" },
+    { name = "ruff", specifier = ">=0.16.8" },
 ]
 
 [[package]]

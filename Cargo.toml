@@ -1,0 +1,12 @@
+[package]
+name    = "pyhaxeformat"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "pyhaxeformat"
+path = "src/pyhaxeformat/lib.rs"
+
+[dependencies]
+haxeformat = "0.2.3"
+pyo3       = "0.29.2"
