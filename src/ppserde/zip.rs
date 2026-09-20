@@ -2,6 +2,7 @@ const LOC_SIG: u32 = 0x04034B50;
 const CEN_SIG: u32 = 0x02014B50;
 const END_SIG: u32 = 0x06054B50;
 const VERSION: u16 = 20;
+const DOS_DATE_1980_01_01: u16 = 0x0021;
 
 fn crc32(data: &[u8]) -> u32 {
 	let mut crc = u32::MAX;
@@ -43,7 +44,7 @@ pub(crate) fn build(entries: &[(String, Vec<u8>)]) -> Result<Vec<u8>, &'static s
 		push_u16(&mut output, 0);
 		push_u16(&mut output, 0);
 		push_u16(&mut output, 0);
-		push_u16(&mut output, 0);
+		push_u16(&mut output, DOS_DATE_1980_01_01);
 		push_u32(&mut output, checksum);
 		push_u32(&mut output, data_len);
 		push_u32(&mut output, data_len);
@@ -62,7 +63,7 @@ pub(crate) fn build(entries: &[(String, Vec<u8>)]) -> Result<Vec<u8>, &'static s
 		push_u16(&mut output, 0);
 		push_u16(&mut output, 0);
 		push_u16(&mut output, 0);
-		push_u16(&mut output, 0);
+		push_u16(&mut output, DOS_DATE_1980_01_01);
 		push_u32(&mut output, checksum);
 		push_u32(&mut output, data_len);
 		push_u32(&mut output, data_len);
@@ -92,7 +93,7 @@ pub(crate) fn build(entries: &[(String, Vec<u8>)]) -> Result<Vec<u8>, &'static s
 
 #[cfg(test)]
 mod tests {
-	use super::{build, crc32};
+	use super::{DOS_DATE_1980_01_01, build, crc32};
 
 	#[test]
 	fn crc32_matches_standard_vector() {
@@ -104,10 +105,18 @@ mod tests {
 		let archive = build(&[("/data/Text.xml".into(), b"test".to_vec())]).unwrap();
 		assert_eq!(&archive[..4], b"PK\x03\x04");
 		assert_eq!(u16::from_le_bytes(archive[8..10].try_into().unwrap()), 0);
+		assert_eq!(
+			u16::from_le_bytes(archive[12..14].try_into().unwrap()),
+			DOS_DATE_1980_01_01
+		);
 		let central = archive.windows(4).position(|w| w == b"PK\x01\x02").unwrap();
 		assert_eq!(
 			u16::from_le_bytes(archive[central + 4..central + 6].try_into().unwrap()),
 			20
+		);
+		assert_eq!(
+			u16::from_le_bytes(archive[central + 14..central + 16].try_into().unwrap()),
+			DOS_DATE_1980_01_01
 		);
 		assert_eq!(
 			u32::from_le_bytes(archive[central + 38..central + 42].try_into().unwrap()),
