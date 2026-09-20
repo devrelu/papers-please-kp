@@ -1,36 +1,32 @@
 [project]
-name = "papers-please-kp"
-version = "1.4.11.post1"
+name            = "papers-please-kp"
+version         = "1.4.11.post1"
 requires-python = ">= 3.10"
-dependencies = [
-	"UnityPy >= 1.25.3",
-]
+dependencies    = ["UnityPy >= 1.25.3"]
 
 [dependency-groups]
-dev = [
-	"basedpyright >= 1.40.1",
-	"ruff         >= 0.16.8",
-]
+dev = ["basedpyright >= 1.40.1", "ruff >= 0.16.8"]
 
 [build-system]
 build-backend = "maturin"
-requires = ["maturin >= 1.7, < 2.0"]
+requires      = ["maturin >= 1.7, < 2.0"]
 
 [tool.maturin]
-module-name = "pyhaxeformat"
+module-name   = "ppserde"
 manifest-path = "Cargo.toml"
 
 [tool.uv]
 package = true
 
 [tool.basedpyright]
-venvPath = "."
-venv = ".venv"
+extraPaths = ["src"]
+venv       = ".venv"
+venvPath   = "."
 
 [tool.ruff]
 target-version = "py310"
-line-length = 88
-indent-width = 3
+line-length    = 88
+indent-width   = 3
 
 [tool.ruff.format]
 indent-style = "tab"

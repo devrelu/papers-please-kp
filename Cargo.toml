@@ -1,11 +1,11 @@
 [package]
-name    = "pyhaxeformat"
+name    = "ppserde"
 version = "0.1.0"
 edition = "2024"
 
 [lib]
-name = "pyhaxeformat"
-path = "src/pyhaxeformat/lib.rs"
+name = "ppserde"
+path = "src/ppserde/lib.rs"
 
 [dependencies]
 haxeformat = "0.2.3"

@@ -210,20 +210,20 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "05c8b63e8d9609db387f0324918f81d68fe27748f084ef092fb35954d0539a85"
 
 [[package]]
+name = "ppserde"
+version = "0.1.0"
+dependencies = [
+ "haxeformat",
+ "pyo3",
+]
+
+[[package]]
 name = "proc-macro2"
 version = "1.0.107"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9"
 dependencies = [
  "unicode-ident",
-]
-
-[[package]]
-name = "pyhaxeformat"
-version = "0.1.0"
-dependencies = [
- "haxeformat",
- "pyo3",
 ]
 
 [[package]]
