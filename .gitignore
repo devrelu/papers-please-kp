@@ -1,0 +1,17 @@
+### OS ###
+Thumbs.db
+.DS_Store
+
+### Agents ###
+.handoff/
+
+### Python ###
+dist/
+.venv/
+.ruff_cache/
+__pycache__/
+*.egg-info/
+*.py[cod]
+
+### Project ###
+out/
