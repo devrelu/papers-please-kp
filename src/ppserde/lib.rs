@@ -21,7 +21,6 @@ fn xxtea_words(input: &[u8]) -> Result<Vec<u32>, &'static str> {
 		.collect())
 }
 
-#[cfg(test)]
 fn xxtea_encrypt(input: &[u8]) -> Result<Vec<u8>, &'static str> {
 	let mut words = xxtea_words(input)?;
 	let mut z = *words.last().unwrap();
@@ -115,13 +114,36 @@ fn deserialize(py: Python<'_>, encrypted: &[u8]) -> PyResult<Py<PyAny>> {
 }
 
 #[pyfunction]
+fn decrypt<'py>(
+	py: Python<'py>,
+	encrypted: &Bound<'py, PyBytes>,
+) -> PyResult<Bound<'py, PyBytes>> {
+	let decrypted =
+		xxtea_decrypt(encrypted.as_bytes()).map_err(PyValueError::new_err)?;
+	Ok(PyBytes::new(py, &decrypted))
+}
+
+#[pyfunction]
+fn encrypt<'py>(
+	py: Python<'py>,
+	plaintext: &Bound<'py, PyBytes>,
+) -> PyResult<Bound<'py, PyBytes>> {
+	let encrypted =
+		xxtea_encrypt(plaintext.as_bytes()).map_err(PyValueError::new_err)?;
+	Ok(PyBytes::new(py, &encrypted))
+}
+
+#[pyfunction]
 fn loads(py: Python<'_>, encrypted: &Bound<'_, PyBytes>) -> PyResult<Py<PyAny>> {
 	deserialize(py, encrypted.as_bytes())
 }
 
 #[pymodule]
 fn ppserde(module: &Bound<'_, PyModule>) -> PyResult<()> {
-	module.add_function(wrap_pyfunction!(loads, module)?)
+	module.add_function(wrap_pyfunction!(decrypt, module)?)?;
+	module.add_function(wrap_pyfunction!(encrypt, module)?)?;
+	module.add_function(wrap_pyfunction!(loads, module)?)?;
+	Ok(())
 }
 
 #[cfg(test)]
